@@ -1,0 +1,14 @@
+<div class="container">
+    <h2>Adicionar Novo Aluno</h2>
+    <form (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label>Nome:</label>
+        <input type="text" class="form-control" [(ngModel)]="aluno.nome" name="nome">
+      </div>
+      <div class="form-group">
+        <label>Turma:</label>
+        <input type="text" class="form-control" [(ngModel)]="aluno.turma" name="turma">
+      </div>
+      <button type="submit" class="btn btn-primary">Salvar</button>
+    </form>
+  </div>

@@ -1,0 +1,53 @@
+<div class="container">
+  <!-- Título da página -->
+  <h2>Controle de Acesso - Entrada de Alunos</h2>
+  
+  <!-- Mostra a data de hoje -->
+  <p>Data: {{dataHoje}}</p>
+  
+  <!-- Botão para cadastrar novo aluno -->
+  <a [routerLink]="['/aluno/adicionar']" class="btn btn-primary">
+    Cadastrar Novo Aluno
+  </a>
+  
+  <!-- Tabela de alunos -->
+  <table class="table mt-3">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Turma</th>
+        <th>Digital</th>
+        <th>Presenças</th>
+        <th>Hoje</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Lista cada aluno -->
+      <tr *ngFor="let aluno of alunos">
+        <td>{{aluno.nome}}</td>
+        <td>{{aluno.turma}}</td>
+        <td>
+          <!-- Botão da digital -->
+          <button (click)="marcarPresente(aluno.id)" class="btn btn-primary">
+            Ler Digital
+          </button>
+        </td>
+        <td>
+          {{getPresencasMes(aluno.id)}} dias
+        </td>
+        <td>
+          <!-- Mostra se está presente ou não -->
+          <span class="badge" [ngClass]="aluno.presenteHoje ? 'bg-success' : 'bg-danger'">
+            {{aluno.presenteHoje ? 'Presente' : 'Ausente'}}
+          </span>
+        </td>
+        <td>
+          <!-- Botão de excluir -->
+          <button (click)="excluirAluno(aluno.id)" class="btn btn-danger">
+            Excluir
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
